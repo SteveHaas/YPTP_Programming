@@ -1,0 +1,25 @@
+- Verdiepen in Processing (https://processing.org)
+- Opdracht voor animatie/poppetjes concretiseren
+  - Heb al eentje klaarliggen ter voorbeeld
+- Presentatie/dia's fixen
+
+Explain concepts and theory by using the following:
+1 - Draw stick figure
+2 - Draw stick figure for one point
+3 - Draw 2 stickmen
+4 - Draw 2 stickmen the OOP way
+5 - Fix example with stickmen in array
+6 - Move stick figure (OOP)
+Visualization of the code might help folks connect the dots faster!
+
+HOMEWORK
+--------------------------------------------
+ x - Draw stick figure over time
+ x - Animate stick figure
+ x - Each group makes a scene
+ x - Mash scenes together
+ x - Joy!
+ --------------------------------------------
+ JUnit logtest
+ - load log (csv)
+ - check each line of log on fields and ID
