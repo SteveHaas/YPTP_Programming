@@ -23,3 +23,16 @@ HOMEWORK
  JUnit logtest
  - load log (csv)
  - check each line of log on fields and ID
+- make this a practical problem
+  - "How do I load this text file into Java?" Go through that thinking process and show it.
+ --------------------------------------------
+AT THE END
+Give good sources!
+  - Automate the Boring Stuff
+  - leetcode
+  - stackoverflow
+  - w3schools
+  - nothing wrong with googling!
+  Headfirst Java via Sogeti: just ask your UM
+
+"Kan ons altijd appen/vragen natuurlijk"
