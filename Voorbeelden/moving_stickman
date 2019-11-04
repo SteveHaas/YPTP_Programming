@@ -1,0 +1,104 @@
+float y = 100;
+Person person3= new Person(300.0,250.0,100.0,100.0);
+
+// The statements in the setup() function
+// execute once when the program begins
+void setup() {
+  size(400,400);  // Size must be the first statement
+  stroke(255);     // Set line drawing color to white
+  frameRate(30);
+}
+
+// The statements in draw() are executed until the
+// program is stopped. Each statement is executed in
+// sequence and after the last line is read, the first
+// line is executed again.
+void draw() {
+  background(0);   // Clear the screen with a black background
+
+  //These two lines are for flipping the y-axis
+  //In Processing the left uppercorner of the screen is 0,0
+  //The bottom left corner would be 0,0 - the height of the screen
+  translate(0,height);
+  scale    (1,-1);
+  //with these line the bottom corner of the canvas is 0,0 and we can draw normally
+
+  //set the Points that make up the stick person
+  Float personHeight        = 100.0;
+  Float personWidth         = 100.0;
+  PVector headPosition      =  new PVector(  width/2 , height/2 ); //set head in the middle of the screen
+
+  //we define all variables from only this point out, using ratios instead of 'hardcoded' numbers
+  PVector hipPosition       =  new PVector(headPosition.x,headPosition.y-(personHeight/2));
+  PVector leftFootPosition  =  new PVector(headPosition.x-(personWidth/3), headPosition.y-personHeight );
+  PVector rightFootPosition =  new PVector(headPosition.x+(personWidth/3), headPosition.y-personHeight );
+  PVector leftHandPostion   =  new PVector(headPosition.x-(personWidth/2), headPosition.y-(personHeight/5));
+  PVector rightHandPostion  =  new PVector(headPosition.x+(personWidth/2), headPosition.y-(personHeight/5));
+
+ //draw the lines that make up the stick person (the stickes)
+  line   ( headPosition.x      , headPosition.y                  , hipPosition.x      , hipPosition.y     ); //draw torso
+  line   ( leftFootPosition.x  , leftFootPosition.y              , hipPosition.x      , hipPosition.y     ); //draw left leg
+  line   ( rightFootPosition.x , rightFootPosition.y             , hipPosition.x      , hipPosition.y     ); //draw right leg
+  line   ( headPosition.x      , headPosition.y-(personHeight/8) , leftHandPostion.x  , leftHandPostion.y ); //draw left arm
+  line   ( headPosition.x      , headPosition.y-(personHeight/8) , rightHandPostion.x , rightHandPostion.y); //draw right arm
+
+  circle  (headPosition.x      , headPosition.y+(personWidth/4)  , personWidth/2); //draw the head
+
+ //**********************
+ //now do it with OOP
+ Person person2= new Person(300.0,200.0,100.0,100.0);
+ person2.drawP();
+
+ //move a person
+ person3.movePersonToRight();
+ person3.drawP();
+
+
+}     //End of draw function
+
+class Person{
+
+  //variables
+  Float personHeight;
+  Float personWidth;
+  private PVector headPosition= new PVector();
+
+  Person(Float positionX, Float positionY, Float _pHeight, Float _pWidth) {
+    headPosition.x= positionX;
+    headPosition.y= positionY;
+    personHeight=_pHeight;
+    personWidth= _pWidth;
+  }
+  void drawP(){
+    //set the Points that make up the stick person
+
+  //we define all variables from only this point out, using ratios instead of 'hardcoded' numbers
+  PVector hipPosition       =  new PVector(headPosition.x,headPosition.y-(personHeight/2));
+  PVector leftFootPosition  =  new PVector(headPosition.x-(personWidth/3), headPosition.y-personHeight );
+  PVector rightFootPosition =  new PVector(headPosition.x+(personWidth/3), headPosition.y-personHeight );
+  PVector leftHandPostion   =  new PVector(headPosition.x-(personWidth/2), headPosition.y-(personHeight/5));
+  PVector rightHandPostion  =  new PVector(headPosition.x+(personWidth/2), headPosition.y-(personHeight/5));
+
+ //draw the lines that make up the stick person (the stickes)
+  line   ( headPosition.x      , headPosition.y                  , hipPosition.x      , hipPosition.y     ); //draw torso
+  line   ( leftFootPosition.x  , leftFootPosition.y              , hipPosition.x      , hipPosition.y     ); //draw left leg
+  line   ( rightFootPosition.x , rightFootPosition.y             , hipPosition.x      , hipPosition.y     ); //draw right leg
+  line   ( headPosition.x      , headPosition.y-(personHeight/8) , leftHandPostion.x  , leftHandPostion.y ); //draw left arm
+  line   ( headPosition.x      , headPosition.y-(personHeight/8) , rightHandPostion.x , rightHandPostion.y); //draw right arm
+
+  circle  (headPosition.x      , headPosition.y+(personWidth/4)  , personWidth/2); //draw the head
+  }
+
+  PVector movePointToRight(PVector point) {
+    point.x = point.x+1.0;
+    return point;
+  }
+
+  void movePersonToRight() {
+    headPosition.x= headPosition.x + 1.0;
+    if(headPosition.x > width ){
+        headPosition.x =  0.0 ;
+    }
+  }
+  
+}
